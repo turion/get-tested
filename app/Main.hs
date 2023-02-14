@@ -25,7 +25,7 @@ main = do
   processingResult <- runEff . runErrorNoCallStack $ runOptions result
   case processingResult of
     Right json -> ByteString.putStrLn $ "matrix=" <> json
-    Left _ -> error "mleh!"
+    Left e -> error $ "Error: " ++ show e
 
 parseOptions :: Parser Options
 parseOptions =
